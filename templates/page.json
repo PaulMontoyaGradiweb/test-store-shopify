@@ -50,8 +50,6 @@
         "stack_images_on_mobile": true,
         "show_text_below": true
       }
-<<<<<<< HEAD
-=======
     },
     "1637187122ebcf96bd": {
       "type": "productsgrid",
@@ -100,17 +98,12 @@
       "settings": {
         "title": ""
       }
->>>>>>> 5b9eee8ac2bd585c9efc2a9f667fd3144a5a5d84
     }
   },
   "order": [
     "main",
-<<<<<<< HEAD
-    "1637158572b7c66d93"
-=======
     "1637158572b7c66d93",
     "1637187122ebcf96bd",
     "1637187168cb538f52"
->>>>>>> 5b9eee8ac2bd585c9efc2a9f667fd3144a5a5d84
   ]
 }
