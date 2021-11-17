@@ -1,0 +1,13 @@
+{
+  "wrapper": "div#testin_id.testing_class[attribute-test=testiando-ando]",
+  "sections": {
+    "main": {
+      "type": "productsgrid",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
