@@ -5,6 +5,9 @@
     "main": {
       "type": "productsgrid",
       "settings": {
+      },
+      "type": "productsgrid-collection",
+      "settings": {
       }
     }
   },
