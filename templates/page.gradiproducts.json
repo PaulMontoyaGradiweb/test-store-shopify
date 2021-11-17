@@ -1,0 +1,20 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "16371561450b04a276": {
+      "type": "page",
+      "settings": {
+        "page": "productos-gradiweb"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "16371561450b04a276"
+  ]
+}

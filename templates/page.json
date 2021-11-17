@@ -4,9 +4,55 @@
       "type": "main-page",
       "settings": {
       }
+    },
+    "1637158572b7c66d93": {
+      "type": "image-banner",
+      "blocks": {
+        "16371585728182c44b-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "cambiando titulo",
+            "heading_size": "large"
+          }
+        },
+        "16371585728182c44b-1": {
+          "type": "text",
+          "settings": {
+            "text": "Lorem input"
+          }
+        },
+        "16371585728182c44b-2": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": true,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": true
+          }
+        }
+      },
+      "block_order": [
+        "16371585728182c44b-0",
+        "16371585728182c44b-1",
+        "16371585728182c44b-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/man-browsing-at-a-guitar-shop.jpg",
+        "image_height": "medium",
+        "adapt_height_first_image": false,
+        "desktop_text_box_position": "center",
+        "show_text_box": true,
+        "image_overlay_opacity": 0,
+        "color_scheme": "background-1",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "1637158572b7c66d93"
   ]
 }

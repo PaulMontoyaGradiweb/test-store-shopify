@@ -9,9 +9,9 @@
       Reto 3
   </h2>
   <div class="rte">
-    {% for collection in product.collections %}
-      {{ collection.title }}
-    {% endfor %}
+    {%- if section.settings.page.content != blank -%}
+      {{ section.settings.page.content }}
+    {%- else -%}
       <div class='page-placeholder-wrapper placeholder'>
         {{ 'page' | placeholder_svg_tag: 'page-placeholder' }}
       </div>
