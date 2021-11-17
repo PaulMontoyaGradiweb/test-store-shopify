@@ -7,6 +7,7 @@
     },
     "1637158572b7c66d93": {
       "type": "image-banner",
+      "disabled": true,
       "blocks": {
         "16371585728182c44b-0": {
           "type": "heading",
@@ -49,10 +50,67 @@
         "stack_images_on_mobile": true,
         "show_text_below": true
       }
+<<<<<<< HEAD
+=======
+    },
+    "1637187122ebcf96bd": {
+      "type": "productsgrid",
+      "blocks": {
+        "7f9dc1c5-9835-4d30-92cc-70a810d85681": {
+          "type": "advert",
+          "settings": {
+            "product": "throbbing-shadow"
+          }
+        },
+        "2e444f2c-df48-41e5-9854-df2b11e149d3": {
+          "type": "advert",
+          "settings": {
+            "product": "fragrant-leaf"
+          }
+        },
+        "b12fd76a-f357-4ebc-9ecf-1862bf10f634": {
+          "type": "advert",
+          "settings": {
+            "product": "young-forest"
+          }
+        }
+      },
+      "block_order": [
+        "7f9dc1c5-9835-4d30-92cc-70a810d85681",
+        "2e444f2c-df48-41e5-9854-df2b11e149d3",
+        "b12fd76a-f357-4ebc-9ecf-1862bf10f634"
+      ],
+      "settings": {
+        "title": ""
+      }
+    },
+    "1637187168cb538f52": {
+      "type": "productsgrid-collection",
+      "blocks": {
+        "142b8137-b25e-4a1e-aa0d-ed270ad79719": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "collection-test"
+          }
+        }
+      },
+      "block_order": [
+        "142b8137-b25e-4a1e-aa0d-ed270ad79719"
+      ],
+      "settings": {
+        "title": ""
+      }
+>>>>>>> 5b9eee8ac2bd585c9efc2a9f667fd3144a5a5d84
     }
   },
   "order": [
     "main",
+<<<<<<< HEAD
     "1637158572b7c66d93"
+=======
+    "1637158572b7c66d93",
+    "1637187122ebcf96bd",
+    "1637187168cb538f52"
+>>>>>>> 5b9eee8ac2bd585c9efc2a9f667fd3144a5a5d84
   ]
 }
