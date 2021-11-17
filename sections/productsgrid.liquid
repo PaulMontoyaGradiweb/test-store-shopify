@@ -4,31 +4,60 @@
 <noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'section-main-page.css' | asset_url | stylesheet_tag }}</noscript>
 
-<div class="page-width page-width--narrow">
+
+<div class="" style="padding: 0 2rem;">
   <h2 class="page-title">
       Reto 3
   </h2>
-  <div class="rte">
-    {%- if section.settings.page.content != blank -%}
-      {{ section.settings.page.content }}
-    {%- else -%}
-      <div class='page-placeholder-wrapper placeholder'>
-        {{ 'page' | placeholder_svg_tag: 'page-placeholder' }}
+  <div class="test collection-list" style="display: flex; justify-content: space-around;">
+    {%- for block in section.blocks -%}
+      {%- assign product = all_products[block.settings.product] -%}
+      <div>
+        <a href="{{ product.url }}">
+          <img src="{{ product.featured_image | img_url: '300x300' }}">
+        </a>
+        <h2> {{ product.title }} </h2>
+        <p> $ {{ product.price }} COP</p>
+        {% for product_option in product.options_with_values %}
+        {% if product_option.name == "Color" %}
+          <div style="display: flex;"> 
+            {% for value in product_option.values %}
+              <div style="background-color: {{value}}; height: 20px; width:20px; border-radius:50%; margin: 0 5px; border: 2px solid lawngreen; cursor:pointer;">
+              </div>
+              {% endfor %}
+            </div>
+            <a href="/cart/{{product.variants[0].id }}:1">Agregar al carrito</a>
+          {% endif %}
+        {% endfor %}
       </div>
-    {%- endif -%}
+    {%- endfor -%}
   </div>
+
 </div>
 
 {% schema %}
 {
-  "name": "t:sections.page.name",
+  "name": "products-grid",
   "tag": "section",
-  "class": "spaced-section",
+  "class": "capacitacion product-grid",
   "settings": [
     {
-      "type": "page",
-      "id": "page",
-      "label": "t:sections.page.settings.page.label"
+      "type": "text",
+      "id": "title",
+      "label": "Testo antes de la grid"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "advert",
+      "name": "Product Block",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product-Handle"
+        }
+      ]
     }
   ],
   "presets": [
