@@ -1,0 +1,38 @@
+{% comment %}
+    Renders a list of product's photos (regular, sale)
+
+    Accepts:
+    - product: {Object} Product Liquid object (optional)
+
+    Usage:
+    {%- render 'photos-product', product: product, photo_class: 'images-test' -%}
+{% endcomment %}
+{%- liquid
+  if use_variant
+    assign target = product.selected_or_first_available_variant
+  else
+    assign target = product
+  endif
+-%}
+
+<div class="photos">
+  <div class="product__media-list grid grid--peek list-unstyled slider slider--mobile" role="list">
+    {%- assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' -%}
+    {%- if product.selected_or_first_available_variant.featured_media != null -%}
+      {%- assign media = product.selected_or_first_available_variant.featured_media -%}
+      <div 
+        class="product__media-item grid__item slider__slide{% if section.settings.hide_variants and variant_images contains media.src %} product__media-item--variant{% endif %}" 
+        data-media-id="{{ section.id }}-{{ media.id }}"
+        >
+          <img 
+            src="{{ media | img_url: '1500x' }}"
+            sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | times: 0.64 | round }}px, (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
+            loading="lazy"
+            width="100%"
+            height="{{ 576 | divided_by: media.preview_image.aspect_ratio | ceil }}"
+            alt="{{ media.preview_image.alt | escape }}"
+            id="image-product">
+      </div>
+    {%- endif -%}
+  </div>
+</div>
