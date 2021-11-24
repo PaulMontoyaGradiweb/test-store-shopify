@@ -6,6 +6,8 @@
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'component-rating.css' | asset_url | stylesheet_tag }}
 {{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
+{% assign settings_colores_array = settings.select_products_options | split: ' ' %}
+
 
 <link rel="stylesheet" href="{{ 'component-deferred-media.css' | asset_url }}" media="print" onload="this.media='all'">
 
@@ -65,6 +67,7 @@
                 {%- endfor -%}
               </variant-radios>
           {%- endunless -%}
+          {{ 'option_selection.js' | shopify_asset_url | script_tag }}
           <!-- <div class="product-form__input product-form__quantity" {{ block.shopify_attributes }}>
             <label class="form__label" for="Quantity-{{ section.id }}">
               {{ 'products.product.quantity.label' | t }}
@@ -103,6 +106,7 @@
               {%- endif -%}
             </span>
           </a>
+          
       </div>
     </div>
   </div>
