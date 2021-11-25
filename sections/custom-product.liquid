@@ -6,7 +6,7 @@
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'component-rating.css' | asset_url | stylesheet_tag }}
 {{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
-{% assign settings_colores_array = settings.select_products_options | split: ' ' %}
+{% assign color_product = settings %}
 
 
 <link rel="stylesheet" href="{{ 'component-deferred-media.css' | asset_url }}" media="print" onload="this.media='all'">
@@ -68,7 +68,7 @@
               </variant-radios>
           {%- endunless -%}
           {{ 'option_selection.js' | shopify_asset_url | script_tag }}
-          <!-- <div class="product-form__input product-form__quantity" {{ block.shopify_attributes }}>
+          <div class="product-form__input product-form__quantity" {{ block.shopify_attributes }}>
             <label class="form__label" for="Quantity-{{ section.id }}">
               {{ 'products.product.quantity.label' | t }}
             </label>
@@ -83,6 +83,7 @@
                   name="quantity"
                   id="Quantity-{{ section.id }}"
                   min="1"
+                  max=""
                   value="1"
                   form="product-form-{{ section.id }}"
                 >
@@ -91,22 +92,23 @@
                 {% render 'icon-plus' %}
               </button>
             </quantity-input>
-          </div> -->
-          <a 
-            href="/cart/{{product.selected_or_first_available_variant.id}}:1" 
-            id="send-to-checkout"
-            class="product-form__submit button button--full-width button--primary"
-            data-url="{{product.selected_or_first_available_variant.id}}:1"
-            data-id="{{product.selected_or_first_available_variant.id}}">
-            <span>
-              {%- if product.selected_or_first_available_variant.available -%}
-                {{ 'products.product.add_to_cart' | t }}
-              {%- else -%}
-                {{ 'products.product.sold_out' | t }}
-              {%- endif -%}
-            </span>
-          </a>
-          
+          </div>
+          <div id="send-to-cart">
+            <a 
+              href="/cart/{{product.selected_or_first_available_variant.id}}:1"
+              id="send-to-checkout"
+              class="product-form__submit button button--full-width button--primary"
+              data-id="{{product.selected_or_first_available_variant.id}}">
+              <span>
+                {%- if product.selected_or_first_available_variant.available -%}
+                  {{ 'products.product.add_to_cart' | t }}
+                {%- else -%}
+                  {{ 'products.product.sold_out' | t }}
+                {%- endif -%}
+              </span>
+            </a>
+          </div>
+          {{ product.selected_or_first_available_variant.title }}
       </div>
     </div>
   </div>
@@ -114,26 +116,6 @@
 </section>
 
 {% javascript %}
-  /*const plusBtn = () => {
-    let plus = document.querySelector('#plus-btn')
-    console.log(plus)
-  } 
-
-  const changeQnt = () => {
-    let btnToCart = document.getElementById('send-to-checkout')
-    let inputQnt = document.querySelector('.quantity__input')
-    inputQnt.addEventListener('change', () => {
-      let value = inputQnt.value
-      let newData = `${btnToCart.dataset.id}:${value}`
-      let valueNew = btnToCart.href.replace(`${btnToCart.dataset.url}`, newData)
-      console.log('cart', btnToCart)
-      console.log('input', inputQnt)
-      btnToCart.href = valueNew
-      plusBtn()
-    })
-  }
-  changeQnt()*/
-
   const changePageImage = (data) => {
     let section = document.querySelector('.product-section')
     section.innerHTML = data
@@ -157,6 +139,19 @@
     })
   }
   selectItems()
+
+  const btnForSend = document.getElementById('send-to-cart')
+  if (btnForSend){
+    btnForSend.addEventListener("click", () => {
+      const inputQnt = document.querySelector('.quantity__input')
+      const linkToCart = document.getElementById('send-to-checkout')
+      const idProduct = linkToCart.dataset.id
+      let oldHref = linkToCart.href
+      
+      const newHref = 
+      console.log(inputQnt.value) 
+    })
+  }
 {% endjavascript %}
 
 {% schema %}
