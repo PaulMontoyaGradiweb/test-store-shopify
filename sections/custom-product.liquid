@@ -147,9 +147,10 @@
       const linkToCart = document.getElementById('send-to-checkout')
       const idProduct = linkToCart.dataset.id
       let oldHref = linkToCart.href
-      
-      const newHref = 
-      console.log(inputQnt.value) 
+      const baseHref = oldHref.substring(0, `${oldHref.indexOf(idProduct) + idProduct.length}`)
+      const newHref = `${baseHref}:${inputQnt.value}`
+      linkToCart.href = newHref
+      linkToCart.click()
     })
   }
 {% endjavascript %}
