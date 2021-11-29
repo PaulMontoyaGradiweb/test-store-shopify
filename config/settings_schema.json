@@ -348,5 +348,26 @@
         "default": true
       }
     ]
+  },
+  {
+    "name":"colors products",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Colors Products"
+      },
+      {
+        "type": "color",
+        "id": "classic",
+        "default": "#FF33F9",
+        "label": "Product Classic"
+      },
+      {
+        "type": "color",
+        "id": "new",
+        "default": "#E0FF33",
+        "label": "Prduct New"
+      }
+    ]
   }
 ]
