@@ -32,11 +32,6 @@
           "type": "description",
           "settings": {
           }
-        },
-        "share": {
-          "type": "share",
-          "settings": {
-          }
         }
       },
       "block_order": [
