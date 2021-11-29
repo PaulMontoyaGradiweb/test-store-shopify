@@ -105,7 +105,7 @@
               </button>
             </quantity-input>
           </div>
-          <div id="send-to-cart" class="{% if product.available%} {% else %} inavilitable {% endif %}">
+          <div id="send-to-cart" class="{% if  product.selected_or_first_available_variant.available%} {% else %} inavilitable {% endif %}">
             <a 
               href="/cart/{{product.selected_or_first_available_variant.id}}:1"
               id="send-to-checkout"
@@ -126,8 +126,8 @@
 
 </section>
 
-{% javascript %}
-  const changePageImage = (data) => {
+<script>
+    const changePageImage = (data) => {
     let section = document.querySelector('.product-section')
     section.innerHTML = data
     selectItems()
@@ -161,10 +161,13 @@
       const baseHref = oldHref.substring(0, `${oldHref.indexOf(idProduct) + idProduct.length}`)
       const newHref = `${baseHref}:${inputQnt.value}`
       linkToCart.href = newHref
+      console.log(linkToCart.href)
+      debugger
       linkToCart.click()
+
     })
   }
-{% endjavascript %}
+</script>
 
 {% schema %}
 {
