@@ -161,8 +161,6 @@
       const baseHref = oldHref.substring(0, `${oldHref.indexOf(idProduct) + idProduct.length}`)
       const newHref = `${baseHref}:${inputQnt.value}`
       linkToCart.href = newHref
-      console.log(linkToCart.href)
-      debugger
       linkToCart.click()
 
     })
