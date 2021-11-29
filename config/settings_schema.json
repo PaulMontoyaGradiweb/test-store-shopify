@@ -350,23 +350,23 @@
     ]
   },
   {
-    "name":"t:settings_schema.colors_products.name",
+    "name":"colors products",
     "settings": [
       {
         "type": "header",
-        "content": "t:settings_schema.colors.settings.header__1.content"
+        "content": "Colors Products"
       },
       {
         "type": "color",
         "id": "classic",
         "default": "#FF33F9",
-        "label": "Color product 1"
+        "label": "Product Classic"
       },
       {
         "type": "color",
         "id": "new",
         "default": "#E0FF33",
-        "label": "Color product 2"
+        "label": "Prduct New"
       }
     ]
   }

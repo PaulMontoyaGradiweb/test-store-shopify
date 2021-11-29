@@ -7,6 +7,18 @@
 {{ 'component-rating.css' | asset_url | stylesheet_tag }}
 {{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
 {% assign color_product = settings %}
+<style>
+  {% for color in color_product %}
+    .product-{{color}}{
+      background-color:{{settings[color]}} !important;
+    }
+  {% endfor %}
+  .inavilitable{
+    opacity: 0.2;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+</style>
 
 
 <link rel="stylesheet" href="{{ 'component-deferred-media.css' | asset_url }}" media="print" onload="this.media='all'">
@@ -59,7 +71,7 @@
                               data-handle="{{product.handle}}"
                               data-variant="{{product.variants[forloop.index0].id}}"
                         >
-                        <label for="{{ section.id }}-{{ option.name }}-{{ forloop.index0 }}">
+                        <label for="{{ section.id }}-{{ option.name }}-{{ forloop.index0 }}" class="product-{{value}}">
                           {{ value }}
                         </label>
                       {%- endfor -%}
@@ -93,7 +105,7 @@
               </button>
             </quantity-input>
           </div>
-          <div id="send-to-cart">
+          <div id="send-to-cart" class="{% if product.available%} {% else %} inavilitable {% endif %}">
             <a 
               href="/cart/{{product.selected_or_first_available_variant.id}}:1"
               id="send-to-checkout"
@@ -108,7 +120,6 @@
               </span>
             </a>
           </div>
-          {{ product.selected_or_first_available_variant.title }}
       </div>
     </div>
   </div>
