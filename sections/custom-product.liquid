@@ -120,6 +120,17 @@
               </span>
             </a>
           </div>
+          <div id="check-cart" class="{% if  product.selected_or_first_available_variant.available%} {% else %} inavilitable {% endif %}">
+            <a 
+              href="/cart/{{product.selected_or_first_available_variant.id}}:1"
+              id="send-to-checkout"
+              class="product-form__submit button button--full-width button--primary"
+              data-id="{{product.selected_or_first_available_variant.id}}">
+              <span>
+                Open Cart
+              </span>
+            </a>
+          </div>
       </div>
     </div>
   </div>
@@ -127,7 +138,7 @@
 </section>
 
 <script>
-    const changePageImage = (data) => {
+  const changePageImage = (data) => {
     let section = document.querySelector('.product-section')
     section.innerHTML = data
     selectItems()
