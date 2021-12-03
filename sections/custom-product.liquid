@@ -120,16 +120,15 @@
               </span>
             </a>
           </div>
-          <div id="check-cart" class="{% if  product.selected_or_first_available_variant.available%} {% else %} inavilitable {% endif %}">
-            <a 
-              href="/cart/{{product.selected_or_first_available_variant.id}}:1"
-              id="send-to-checkout"
+          <div class="{% if  product.selected_or_first_available_variant.available%} {% else %} inavilitable {% endif %}">
+            <button
+              id="open-cart"
               class="product-form__submit button button--full-width button--primary"
               data-id="{{product.selected_or_first_available_variant.id}}">
               <span>
                 Open Cart
               </span>
-            </a>
+            </button>
           </div>
       </div>
     </div>
@@ -150,6 +149,7 @@
       .then(response => response.text())
       .then(data => changePageImage(data));
   }
+
   const selectItems = () => {
     const colors = [...document.querySelectorAll('.inputs-test')]
     colors.forEach(e => {
@@ -173,7 +173,37 @@
       const newHref = `${baseHref}:${inputQnt.value}`
       linkToCart.href = newHref
       linkToCart.click()
+    })
+  }
 
+  const fetchProduct = (formData) => {
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(response => {
+      return response.json();
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+  }
+
+  const openCart = document.querySelector('#open-cart')
+  if (openCart){
+    openCart.addEventListener("click", () => {
+      let id = openCart.dataset.id
+      const inputValue = document.querySelector('.quantity__input').value
+      let formData = {
+        'items': [{
+        'id': id,
+        'quantity': inputValue
+        }]
+      }
+      fetchProduct(formData)
     })
   }
 </script>
