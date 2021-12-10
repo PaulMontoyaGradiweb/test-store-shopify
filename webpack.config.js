@@ -1,12 +1,13 @@
 const webpack = require('webpack');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
   entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, 'assets'),
-    filename: '[name].js'
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].[contenthash].js'
   },
   module: {
     rules: [
@@ -54,11 +55,22 @@ const config = {
     ]
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      appMountId: 'app',
+      filename: 'index.html'
+    }),
     new MiniCssExtractPlugin()
   ],
-  resolve: {
-    alias: {
-      '~': path.resolve('./node_modules')
+  optimization: {
+    runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
     }
   }
 };

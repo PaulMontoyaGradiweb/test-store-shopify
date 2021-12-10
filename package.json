@@ -1,19 +1,17 @@
 {
-  "name": "project-capacitation",
+  "name": "empty-project",
   "version": "1.0.0",
-  "description": "It is a test",
+  "description": "",
   "main": "index.js",
   "keywords": [],
-  "author": "Paul Montoya",
+  "author": "",
   "license": "ISC",
   "scripts": {
     "clean": "rm dist/bundle.js",
     "build-dev": "webpack --mode development",
     "build-prod": "webpack --mode production"
   },
-  "dependencies": {
-    "@splidejs/splide": "^3.2.2"
-  },
+  "dependencies": {},
   "devDependencies": {
     "webpack": "^5.48.0",
     "webpack-cli": "^4.7.2",
@@ -31,13 +29,5 @@
     "file-loader": "^6.2.0",
     "url-loader": "^4.1.1",
     "mini-css-extract-plugin": "^2.1.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/PaulMontoyaGradiweb/test-store-shopify.git"
-  },
-  "bugs": {
-    "url": "https://github.com/PaulMontoyaGradiweb/test-store-shopify/issues"
-  },
-  "homepage": "https://github.com/PaulMontoyaGradiweb/test-store-shopify#readme"
+  }
 }
