@@ -137,8 +137,8 @@
 </section>
 
 <script>
-  const changePageImage = (data) => {
-    let section = document.querySelector('.product-section')
+  const changePageImage = (nodo, data) => {
+    let section = document.querySelector(nodo)
     section.innerHTML = data
     selectItems()
   }
@@ -147,7 +147,7 @@
     let url = `/products/${handle}?variant=${variantId}&section_id=custom-product`
     const request = fetch(url)
       .then(response => response.text())
-      .then(data => changePageImage(data));
+      .then(data => changePageImage('.product-section', data));
   }
 
   const selectItems = () => {
@@ -182,19 +182,27 @@
     cart.classList.toggle('active')
   }
 
-  const upCart = () => {
-    fetch('/cart.js')
-    .then(response => {
-      return response.json();
-    })
-    .then(data => {
-      Agregar aqui el llamado del carro
-      
-      changeClasstoCart()
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+  const searchBtnForCloseCart = () => {
+    let closeCart = document.getElementById('close-cart')
+    closeCart.addEventListener("click", () => {
+    let cart = document.getElementById('mini-cart')
+    cart.classList.toggle('active')
+  })
+  }
+
+  const updateCart = () => {
+    let url = `/?section_id=items-on-cart`
+    const request = fetch(url)
+      .then(response => response.text())
+      .then(data => {
+        changePageImage('#shopify-section-minicard-test', data)
+        changeClasstoCart()
+        searchBtnForCloseCart()
+        return data
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   }
 
   const fetchProduct = (formData) => {
@@ -206,7 +214,7 @@
       body: JSON.stringify(formData)
     })
     .then(response => {
-      upCart()
+      updateCart()
       return response.json();
     })
     .catch((error) => {
