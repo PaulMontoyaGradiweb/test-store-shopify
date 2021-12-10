@@ -28,7 +28,7 @@
 
 <div id="mini-cart" class="{{ section.id}}">
   <div class="cart__header">
-    <h2>Carrito Custom</h2>
+    <h2>Carrito Custom <br>{{ cart.item_count }} Item</h2>
     <span id="close-cart" class="cart__close">[x]</span>
   </div>
   {{cart.items }}
@@ -53,6 +53,7 @@
                 <dd>{{ option.value }}</dd>
               </div>
             {%- endfor -%}
+            <p>{{item.quantity}}</p>
           </dl>
         {%- endunless -%}
         {%- if item.selling_plan_allocation != nil -%}
